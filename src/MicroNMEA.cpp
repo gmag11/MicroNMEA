@@ -299,8 +299,11 @@ const char* MicroNMEA::parseDate(const char* s)
 bool MicroNMEA::processGSA (const char* s) {
 	_autofix = *s;
 	s=s+2; // Skip fix and comma
-	_fix = parseFloat (s, 0, &s);
-	for (int i = 0; i < 12; i++) {
+    _fix = parseFloat (s, 0, &s);
+    _isValid = (_fix > 1);
+
+    // Skip 12 satellite ID fields     
+    for (int i = 0; i < 12; i++) {
 		// Skip 12 satellite ID fields
 		s = skipField (s);
 	}
