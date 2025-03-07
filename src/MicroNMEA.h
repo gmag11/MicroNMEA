@@ -164,18 +164,30 @@ class MicroNMEA {
 		return _geoidHeightValid;
 	}
 	
-	// Fix selection (A = Auto, M = Manual)
-	char getAutofix (void) const {
+    /**
+     * @brief Get the fix selection
+     *
+     * @return char (A = Auto, M = Manual)
+     */
+    char getAutofix (void) const {
 		return _autofix;
 	}
 
-	// Type of fix (1= no fix, 2= 2D, 3= 3D)
-	uint8_t getFix (void) const {
+    /**
+     * @brief Get the fix type
+     *
+     * @return uint8_t (1 = No fix, 2 = 2D, 3 = 3D)
+     */
+    uint8_t getFix (void) const {
 		return _fix;
 	}
 	
-	// Dilution of precision, in tenths
-	uint8_t getPDOP (void) const {
+    /**
+     * @brief Get the position dilution of precision, in tenths
+     *
+     * @return uint8_t
+     */
+    uint8_t getPDOP (void) const {
 		return _pdop;
 	}
 	/**
@@ -307,16 +319,32 @@ class MicroNMEA {
       return _buffer;
     }
 
-    // Talker ID for current MicroNMEA sentence
-    char getTalkerID(void) const {
+    /**
+     * @brief Get the talker ID for the current MicroNMEA sentence
+     *
+     * @return char
+     */
+    char getTalkerID (void) const {
       return _talkerID;
     }
 
-    // Message ID for current MicroNMEA sentence
-    const char* getMessageID(void) const {
+    /**
+     * @brief Get the message ID for the current MicroNMEA sentence
+     *
+     * @return const char*
+     */
+    const char* getMessageID (void) const {
       return (const char*)_messageID;
     }
 
+    /**
+     * @brief Register a handler to be called when time is obtained
+     *
+     * @param handler pointer to handler function
+     */
+    void onTimeReceived (void (*handler)(MicroNMEA& nmea)) {
+        _timeHandler = handler;
+    }
 
   protected:
     static inline bool isEndOfFields(char c) {
@@ -360,6 +388,7 @@ class MicroNMEA {
 
     void (*_badChecksumHandler)(MicroNMEA &nmea);
     void (*_unknownSentenceHandler)(MicroNMEA &nmea);
+    void (*_timeHandler)(MicroNMEA &nmea); // Callback for when time is obtained
 
 };
 

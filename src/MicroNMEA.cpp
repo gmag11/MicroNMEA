@@ -343,8 +343,13 @@ bool MicroNMEA::processGGA(const char *s)
     s += 2; // Skip E/W and comma
   }
   _isValid = (*s >= '1' && *s <= '5');
+  // Notify time has been obtained
+  if (_timeHandler && _isValid) {
+      (*_timeHandler)(*this);
+  }
+
   s += 2; // Skip position fix flag and comma
-  long tmp = parseFloat(s, 0, &s);
+  long tmp = parseFloat (s, 0, &s);
   _numSat = (tmp > 255 ? 255 : (tmp < 0 ? 0 : tmp));
   if (s == nullptr)
     return false;
