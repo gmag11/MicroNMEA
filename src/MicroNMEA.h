@@ -163,10 +163,6 @@ class MicroNMEA {
 			alt = _geoidHeight;
 		return _geoidHeightValid;
 	}
-
-	uint8_t getNumSatellites(void) const {
-		return _numSat;
-	}
 	
 	// Fix selection (A = Auto, M = Manual)
 	char getAutofix (void) const {
