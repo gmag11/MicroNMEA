@@ -78,7 +78,7 @@ void setup(void)
   // Disable compatability mode (NV08C-CSM proprietary message) and
   // adjust precision of time and position fields
   MicroNMEA::sendSentence(gps, "$PNVGNME,2,9,1");
-  // MicroNMEA::sendSentence(gps, "$PONME,2,4,1,0");
+  MicroNMEA::sendSentence(gps, "$PONME,2,4,1,0");
 
 #ifdef ARDUINO_AVR_CALUNIUM
   pinMode(6, INPUT);
@@ -96,11 +96,9 @@ void loop(void)
     ledState = !ledState;
     digitalWrite(LED_BUILTIN, ledState);
 
-		// Output GPS information from previous second
-    console.print ("Valid fix: ");
-    console.print (nmea.isValid () ? "yes " : "no ");
-    console.print (nmea.getFix () == 1 ? "No Fix" : nmea.getFix () == 2 ? "2D" : "3D");
-    console.println (nmea.getAutofix () == 'A' ? " Auto" : " Manual");
+    // Output GPS information from previous second
+    console.print("Valid fix: ");
+    console.println(nmea.isValid() ? "yes" : "no");
 
     console.print("Nav. system: ");
     if (nmea.getNavSystem())

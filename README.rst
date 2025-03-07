@@ -79,13 +79,17 @@ Validity of latest fix. ::
 
 Latitude in millionths of a degree, North is positive. ::
 
-    long getLlongitude(void) const
+    long getLongitude(void) const
 
 Longitude in millionths of a degree, East is positive. ::
 
     bool getAltitude(long &alt) const
 
 Altitude in millimetres, returns true if the altitude was obtained from a valid fix. ::
+
+    bool getGeoidHeight(long &hgt) const
+
+Height above WGS84 Geoid in millimetres, returns true if the height was obtained from a valid fix. ::
 
     uint16_t getYear(void) const
     uint8_t getMonth(void) const
@@ -141,5 +145,11 @@ Contributors
 
 - Steve Marple
 - Christopher Liebman
+- per1234
+- Noah-Jonathan Rosa
+- Philipp Tölke
 
- 
+Documentation
+-------------
+
+For documentation please see Read The Docs, https://micronmea.readthedocs.io/en/latest/.
