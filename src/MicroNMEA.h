@@ -259,20 +259,20 @@ class MicroNMEA {
     }
 
     /**
-     * @brief Get the speed
+     * @brief Get the speed in thousands of knots
      *
-     * @return uint8_t speed in knots
+     * @return uint8_t speed in thousands of knots
     */
     long getSpeed(void) const {
       return _speed;
     }
 
     /**
-     * @brief Get the speed in meters per second
+     * @brief Get the speed in thousands of meters per second
      * @return Speed in thousandths of a meter per second
      */
     long getSpeedMS(void) const {
-      return (_speed * 514444L) / 1000000L; // Convert from knots to m/s
+        return (_speed * 514444L) / 1000000L; // Convert from thousands of knots to thousands of m/s
     }
 
     /**
