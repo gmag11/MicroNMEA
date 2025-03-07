@@ -344,6 +344,7 @@ class MicroNMEA {
 	bool _geoidHeightValid;
     long _speed, _course;
     char _autofix;
+    uint8_t _fix;
     uint16_t _year;
     uint8_t _month, _day, _hour, _minute, _second, _hundredths;
     uint8_t _numSat;
