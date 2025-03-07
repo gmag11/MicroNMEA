@@ -272,7 +272,7 @@ class MicroNMEA {
      * @return Speed in thousandths of a meter per second
      */
     long getSpeedMS(void) const {
-      return (_speed * 514444L) / 1000000L; // Convert from thousandths of knots to thousandths of m/s
+      return (_speed * 514444L) / 1000000L; // Convert from knots to m/s
     }
 
     /**
