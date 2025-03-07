@@ -201,11 +201,7 @@ class MicroNMEA {
 		return _vdop;
 	}
 
-	// Validity of latest fix
-	bool isValid(void) const {
-		return _isValid;
-	}
-    /**
+	/**
      * @brief Get the day of month (1 - 31 inclusive)
      *
      * @return uint8_t month
