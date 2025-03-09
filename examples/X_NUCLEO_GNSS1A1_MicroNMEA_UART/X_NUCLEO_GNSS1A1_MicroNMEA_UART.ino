@@ -129,7 +129,7 @@ void loop(void)
 	  // Output GPS information from previous second
     console.print ("Valid fix: ");
     console.print (nmea.isValid () ? "yes " : "no ");
-    console.print (nmea.getFix () == 1 ? "No Fix" : nmea.getFix () == 2 ? "2D" : "3D");
+    console.print (nmea.getFix () == nmea.FIX_NONE ? "No Fix" : nmea.getFix () == nmea.FIX_2D ? "2D" : "3D");
     console.println (nmea.getAutofix () == 'A' ? " Auto" : " Manual");
 
     console.print("Nav. system: ");
