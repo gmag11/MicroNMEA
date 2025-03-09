@@ -28,6 +28,8 @@ public:
         FIX_3D = 3
     };
 
+    typedef void (*onTimeReceived_t)(MicroNMEA& nmea);
+
     static const char* skipField (const char* s);
     static unsigned int parseUnsignedInt (const char* s, uint8_t len);
     static long parseFloat (const char* s, uint8_t log10Multiplier,
